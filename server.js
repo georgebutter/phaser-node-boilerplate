@@ -17,6 +17,7 @@ if (env === 'development') {
 app.use(express.static('client'));
 
 app.listen(port, () => {
-  const phaser = `${chalk.bgRed(' ')}${chalk.bgYellow(' ')}${chalk.bgGreen(' ')}${chalk.bgCyan(' ')}`
-  console.log(chalk.white.bgBlack(`${phaser} Phaser Node Bolierplate Listening on http://localhost:${port} `))
+  const {bgRed, bgYellow, bgGreen, bgCyan, white} = chalk;
+  const phaser = `${bgRed(' ')}${bgYellow(' ')}${bgGreen(' ')}${bgCyan(' ')}`;
+  console.log(white.bgBlack(`${phaser} Phaser Node Bolierplate Listening on http://localhost:${port} `));
 });

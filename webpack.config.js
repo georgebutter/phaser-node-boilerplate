@@ -1,17 +1,16 @@
-const webpack = require('webpack');
 const path = require('path');
 const mode = process.env.NODE_ENV || 'development';
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
     client: ['babel-polyfill', './src/client.ts'],
-    vendors: ['phaser']
+    vendors: ['phaser'],
   },
   devtool: mode === 'development' ? 'inline-source-map' : false,
   plugins: [
     new CleanWebpackPlugin({
-      root: path.resolve(__dirname, "client")
+      root: path.resolve(__dirname, 'client'),
     }),
   ],
   mode,
@@ -45,15 +44,17 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: { loader: 'babel-loader' },
-      }
-    ]
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
   },
   resolve: {
     extensions: ['.ts', '.js'],
     alias: {
       scenes: path.resolve(__dirname, 'src/scenes/'),
-    }
+    },
   },
   optimization: {
     splitChunks: {
@@ -61,9 +62,9 @@ module.exports = {
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'all'
-        }
-      }
-    }
-  }
-}
+          chunks: 'all',
+        },
+      },
+    },
+  },
+};
