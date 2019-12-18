@@ -1,6 +1,17 @@
 const path = require('path');
 const mode = process.env.NODE_ENV || 'development';
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const htmlConfig = {
+  title: 'Phaser Node Boilerplate',
+  meta: {
+    viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+    description: process.env.npm_package_description,
+    keywords: process.env.npm_package_keywords,
+    charset: 'utf8',
+  },
+};
 
 module.exports = {
   entry: {
@@ -11,6 +22,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin({
       root: path.resolve(__dirname, 'client'),
+    }),
+    new HtmlWebpackPlugin({
+      ...htmlConfig,
+      filename: '../index.html',
+      template: 'src/index.html',
     }),
   ],
   mode,

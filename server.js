@@ -19,5 +19,7 @@ app.use(express.static('client'));
 app.listen(port, () => {
   const {bgRed, bgYellow, bgGreen, bgCyan, white} = chalk;
   const phaser = `${bgRed(' ')}${bgYellow(' ')}${bgGreen(' ')}${bgCyan(' ')}`;
-  console.log(white.bgBlack(`${phaser} Phaser Node Bolierplate Listening on http://localhost:${port} `));
+  const name = process.env.npm_package_name;
+  const version = process.env.npm_package_version;
+  console.log(white.bgBlack(`${phaser} ${name} ${version} http://localhost:${port} `));
 });
